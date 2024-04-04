@@ -156,15 +156,7 @@ class Response:
 
     @staticmethod
     def __split_headers_blocks(raw_headers):
-        i = 0
-        blocks = []
-        for item in raw_headers.strip().split("\r\n"):
-            if item.startswith("HTTP"):
-                blocks.append([item])
-                i = len(blocks) - 1
-            elif item:
-                blocks[i].append(item)
-        return blocks
+        return [raw_headers.strip().split("\r\n")]
 
     @staticmethod
     def __decode_gzip(content):
