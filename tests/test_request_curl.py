@@ -1,6 +1,6 @@
-import request_curl
-from request_curl import CHROME_CIPHER_SUITE, CHROME_HEADERS, CHROME_UA
-from request_curl.dict import CaseInsensitiveDict
+import curlquest
+from curlquest import CHROME_CIPHER_SUITE, CHROME_HEADERS, CHROME_UA
+from curlquest.dict import CaseInsensitiveDict
 
 TLS_API: str = "https://tls.notifysolutions.eu/api/all"
 HTTP_BIN_API: str = "https://httpbin.org"
@@ -9,7 +9,7 @@ GOOGLE: str = "https://google.com"
 
 
 def test_context_manager():
-    with request_curl.Session() as session:
+    with curlquest.Session() as session:
         r = session.get(HTTP_BIN_API + "/get")
         assert r.status_code == 200
 
@@ -60,10 +60,10 @@ def test_custom_cipher_suite(session):
 
 
 def test_custom_request_header(session):
-    session.headers = {"user-agent": "request_curl"}
+    session.headers = {"user-agent": "curlquest"}
     response = session.get(TLS_API)
 
-    assert "user-agent: request_curl" in "".join(response.json["http1"]["headers"])
+    assert "user-agent: curlquest" in "".join(response.json["http1"]["headers"])
 
 
 def test_request_form_data(session):

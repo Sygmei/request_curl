@@ -8,8 +8,8 @@ from http.cookiejar import CookieJar
 import brotli
 import pycurl
 
-from request_curl.dict import CaseInsensitiveDict
-from request_curl.helper import to_cookiejar
+from curlquest.dict import CaseInsensitiveDict
+from curlquest.helper import to_cookiejar
 
 CURL_INFO_MAPPING: Dict[str, Any] = {
     "TOTAL_TIME": pycurl.TOTAL_TIME,

@@ -8,24 +8,24 @@ import certifi
 import pycurl
 from requests.cookies import cookiejar_from_dict, merge_cookies
 
-from request_curl.helper import get_cookie
-from request_curl.models import Response
+from curlquest.helper import get_cookie
+from curlquest.models import Response
 
 
 class Session:
-    """A request_curl session.
+    """A curlquest session.
     Provides cookie persistence, connection-pooling, and configuration.
 
     Basic Usage::
 
-      >>> import request_curl
-      >>> s = request_curl.Session()
+      >>> import curlquest
+      >>> s = curlquest.Session()
       >>> s.get('https://httpbin.org/get')
       <Response [200]>
 
     Or as a context manager::
 
-      >>> with request_curl.Session() as s:
+      >>> with curlquest.Session() as s:
       ...     s.get('https://httpbin.org/get')
       <Response [200]>
     """

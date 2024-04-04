@@ -31,7 +31,7 @@ jobs:
 
       - name: Lint
         shell: bash
-        run: poetry run black --check request_curl tests
+        run: poetry run black --check curlquest tests
 
       - name: Test
         shell: bash

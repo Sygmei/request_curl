@@ -1,5 +1,5 @@
 lint:
-	poetry run black request_curl tests
+	poetry run black curlquest tests
 
 test:
 	poetry run pytest tests
