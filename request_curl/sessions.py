@@ -4,6 +4,7 @@ from typing import Dict, Optional, List, Any, Union
 import json as _json
 from urllib.parse import quote_plus
 
+import certifi
 import pycurl
 from requests.cookies import cookiejar_from_dict, merge_cookies
 
@@ -102,7 +103,7 @@ class Session:
         timeout: Union[float, int] = 60,
         allow_redirects: bool = True,
         http2: bool = False,
-        verify: bool = True,
+        verify: bool | str = True,
         debug: bool = False,
     ):
         """Constructs a :class:`Request <Request>`, prepares it and sends it.
@@ -162,6 +163,10 @@ class Session:
         if not verify:
             self.curl.setopt(pycurl.SSL_VERIFYPEER, 0)
             self.curl.setopt(pycurl.SSL_VERIFYHOST, 0)
+        elif isinstance(verify, str):
+            self.curl.setopt(pycurl.CAINFO, verify)
+        else:
+            self.curl.setopt(pycurl.CAINFO, certifi.where())
 
         if proxies:
             self.proxies = proxies
