@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "curlquest"
-version = "0.1.0"
+version = "0.1.1"
 description = "A user-friendly wrapper for pycurl that simplifies HTTP requests (fork of request_curl with a few changes)"
 authors = [
     "Mauritz Uphoff <mauritz.uphoff@hs-osnabrueck.de>",

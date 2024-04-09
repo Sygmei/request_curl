@@ -1,8 +1,8 @@
 import pytest
 
-import request_curl
+import curlquest
 
 
 @pytest.fixture()
 def session():
-    return request_curl.Session(verify=False)
+    return curlquest.Session(verify=False)
